@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<MUSEUMS>
+    <MUSEUM children_allowed="true">
+        <CITY>Tilburg</CITY>
+        <NAME>De Pont</NAME>
+    </MUSEUM>
+    <MUSEUM children_allowed="true">
+        <CITY>Veluwe</CITY>
+        <NAME>Krullemuller</NAME>
+    </MUSEUM>
+</MUSEUMS>
