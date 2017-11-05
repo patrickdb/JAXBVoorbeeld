@@ -9,6 +9,17 @@ public class Museum {
     boolean childrenAllowed = false;
     String city;
 
+    Exhibitions ex = new Exhibitions();
+
+    @XmlElement(name = "EXHIBITIONS")
+    public Exhibitions getEx() {
+        return ex;
+    }
+
+    public void setEx(Exhibitions ex) {
+        this.ex = ex;
+    }
+
     @XmlElement(name = "NAME")
     public void setName(String name)
     {

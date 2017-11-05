@@ -33,16 +33,21 @@ public class JAXBtestje {
 
     public static void main(String[] args) throws JAXBException {
 
+        JAXBtestje t = new JAXBtestje();
+        t.MakeDT();
+
         // Create some single museums
         Museum m1 = new Museum();
         m1.setName("De Pont");
         m1.setCity("Tilburg");
         m1.setChildrenAllowed(true);
+        m1.getEx().setExhibition("nu en later");
 
         Museum m2 = new Museum();
         m2.setName("Krullemuller");
         m2.setCity("Veluwe");
         m2.setChildrenAllowed(true);
+        m2.getEx().setExhibition("toen en later");
 
         // Create a list of museums
         Museums museumList = new Museums();
