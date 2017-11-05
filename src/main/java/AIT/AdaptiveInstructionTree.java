@@ -1,8 +1,6 @@
 package AIT;
 
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.*;
 import java.util.EnumSet;
 
 /**
@@ -11,24 +9,35 @@ import java.util.EnumSet;
  * based on specific context of code structure
  */
 @XmlRootElement(name="AIT")
+@XmlType(propOrder = {"refactorMechanic", "description", "firstInstruction"})
 public class AdaptiveInstructionTree {
 
+    @XmlTransient
     EnumSet<CodeContext.CodeContextEnum> contextSet;
 
+    @XmlElement(name="MECHANIC")
+    String refactorMechanic;
+
+    @XmlElement(name = "DESCRIPTION")
+    String description;
+
+    @XmlElement(name = "INSTRUCTION")
+    Instruction firstInstruction;
+
     public String getRefactorMechanic() {
-        return RefactorMechanic;
+        return refactorMechanic;
     }
 
     public void setRefactorMechanic(String refactorMechanic) {
-        RefactorMechanic = refactorMechanic;
+        refactorMechanic = refactorMechanic;
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
     public void setDescription(String description) {
-        Description = description;
+        description = description;
     }
 
     public EnumSet<CodeContext.CodeContextEnum> allUniqueCodeContextInTree()
@@ -36,16 +45,7 @@ public class AdaptiveInstructionTree {
         return contextSet;
     }
 
-    @XmlElement(name="MECHANIC")
-    String RefactorMechanic;
-
-    @XmlElement(name = "DESCRIPTION")
-    String Description;
-
     public void setFirstInstruction(Instruction firstInstruction) {
         this.firstInstruction = firstInstruction;
     }
-
-    // @XmlElement(name = "INSTRUCTION")
-    Instruction firstInstruction;
 }

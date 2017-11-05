@@ -1,10 +1,20 @@
 package AIT;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+
+@XmlRootElement(name="DECISION")
 public class ContextDecision {
 
+    @XmlAttribute
     CodeContext.CodeContextEnum contextType;
 
+    @XmlElement(name="INSTRUCTION")
     Instruction instructionResult;
+
+    @XmlTransient
     Instruction previousInstruction;
 
     public CodeContext.CodeContextEnum getContextType() {
