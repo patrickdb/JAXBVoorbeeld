@@ -8,28 +8,27 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement(name="DECISION")
 public class ContextDecision {
 
-    @XmlAttribute
-    CodeContext.CodeContextEnum contextType;
-
-    @XmlElement(name="INSTRUCTION")
-    Instruction instructionResult;
-
     @XmlTransient
     Instruction previousInstruction;
+    @XmlTransient
+    Instruction nextInstruction;
+    CodeContext.CodeContextEnum contextType;
+    int         nextInstructionID = -1;
 
+
+    @XmlAttribute
+    public void setContextType(CodeContext.CodeContextEnum contextType) {
+        this.contextType = contextType;
+    }
     public CodeContext.CodeContextEnum getContextType() {
         return contextType;
     }
 
-    public void setContextType(CodeContext.CodeContextEnum contextType) {
-        this.contextType = contextType;
+    @XmlElement(name="NEXT_INSTRUCTION")
+    public void setNextInstructionID(int instructionResult) {
+        this.nextInstructionID = instructionResult;
     }
-
-    public Instruction getInstructionResult() {
-        return instructionResult;
-    }
-
-    public void setInstructionResult(Instruction instructionResult) {
-        this.instructionResult = instructionResult;
+    public int getNextInstructionID() {
+        return nextInstructionID;
     }
 }

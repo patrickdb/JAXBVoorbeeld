@@ -4,23 +4,21 @@ import javax.naming.Context;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 import java.util.ArrayList;
 import java.util.List;
 
 @XmlRootElement (name = "INSTRUCTION")
+@XmlType(propOrder = {"instructionDescription", "decisions"})
 public class Instruction {
 
     @XmlAttribute
     int     instructionID = -1;
-
-    @XmlElement(name = "TEXT")
     String  instructionDescription;
 
     List<ContextDecision> decisions;
 
-    @XmlElement(name= "DECISION")
-    public void setDecisions(List<ContextDecision> decisions) {
-        this.decisions = decisions;
+    public Instruction() {
     }
 
     public Instruction(int i, String s) {
@@ -28,19 +26,27 @@ public class Instruction {
         this.instructionID = i;
     }
 
+    @XmlElement(name = "TEXT")
+    public void setInstructionDescription(String description) {
+        this.instructionDescription = description;
+    }
     public String getInstructionDescription() {
         return instructionDescription;
     }
 
-    public void setInstructionDescription(String description) {
-        this.instructionDescription = description;
+    @XmlElement(name= "DECISION")
+    public void setDecisions(List<ContextDecision> decisions) {
+        this.decisions = decisions;
     }
-
     public List<ContextDecision> getDecisions()
     {
         return decisions;
     }
 
+    /**
+     * Adds one or more decisions that can be taken after the specific instruction
+     * @param decision defines a code context based decision that leads to a new instruction
+     */
     public void addDecision(ContextDecision decision)
     {
         if (decisions == null)
